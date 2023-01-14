@@ -1,17 +1,11 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Text} from 'react-native';
 import styled from 'styled-components/native';
 
 const Title = () => {
-  const [slogan, setSlogan] = useState('just random text');
-
-  const onTextPress = () => {
-    setSlogan('My slogan!!');
-  };
-
   return (
     <Wrapper>
-      <Text onPress={onTextPress}>{slogan}</Text>
+      <Text>subtitulo</Text>
     </Wrapper>
   );
 };
