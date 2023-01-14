@@ -6,7 +6,9 @@ import Title from '../components/Title';
 const HomeScreen = () => {
   return (
     <Container>
-      <Title />
+      <Wrapper>
+        <Title subtitle="Where do" title="You want to go?" />
+      </Wrapper>
     </Container>
   );
 };
@@ -15,5 +17,8 @@ export default HomeScreen;
 
 const Container = styled.SafeAreaView`
   flex: 1;
-  background: blue;
+`;
+
+const Wrapper = styled.View`
+  padding: 32px 32px;
 `;
