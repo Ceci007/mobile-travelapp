@@ -1,13 +1,11 @@
 import React from 'react';
-import {FlatList, View} from 'react-native';
+import {FlatList} from 'react-native';
 import styled from 'styled-components/native';
-import GradientText from './GradientText';
-import colors from '../utils/colors';
 
-const Categories = ({categories, selectedCategory}) => {
+const Categories = ({categories, selectedCategory, onCategoryPress}) => {
   const renderItem = ({item}) => {
     return (
-      <Wrapper>
+      <Wrapper onPress={() => onCategoryPress(item)}>
         <Text
           style={
             selectedCategory === item
@@ -26,6 +24,7 @@ const Categories = ({categories, selectedCategory}) => {
   return (
     <FlatList
       horizontal={true}
+      style={{marginRight: -32}}
       showsHorizontalScrollIndicator={false}
       data={categories}
       renderItem={renderItem}
@@ -35,7 +34,7 @@ const Categories = ({categories, selectedCategory}) => {
 
 export default React.memo(Categories);
 
-const Wrapper = styled.View`
+const Wrapper = styled.Pressable`
   align-items: center;
   justify-content: center;
   margin-right: 17px;
