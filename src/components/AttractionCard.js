@@ -4,9 +4,9 @@ import styled from 'styled-components/native';
 
 const {width} = Dimensions.get('window');
 
-const AttractionCard = ({imageSrc, title, subtitle}) => {
+const AttractionCard = ({imageSrc, title, subtitle, index}) => {
   return (
-    <CardContainer>
+    <CardContainer m={index % 2 === 0 ? 'margin-right' : 'margin-none'}>
       <CardImage source={{uri: imageSrc}} />
       <Wrapper>
         <Title>{title}</Title>
@@ -30,13 +30,14 @@ const CardImage = styled.Image`
 `;
 
 const CardContainer = styled.View`
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
   padding: 5px;
   border-radius: 15px;
   background: #fff;
   width: ${(width - 72) / 2}px;
-  margin-right: 16px;
   border: 1px solid rgba(0, 0, 0, 0.2);
+  margin-right: ${({m}) => (m == 'margin-right' ? '8px' : '0')};
+  margin-bottom: 8px;
+  margin-left: ${({m}) => (m == 'margin-right' ? '32px' : '0')};
 `;
 
 const Wrapper = styled.View`

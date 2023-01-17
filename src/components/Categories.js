@@ -3,18 +3,18 @@ import {FlatList} from 'react-native';
 import styled from 'styled-components/native';
 
 const Categories = ({categories, selectedCategory, onCategoryPress}) => {
-  const renderItem = ({item}) => {
+  const renderItem = ({item, index}) => {
     return (
-      <Wrapper onPress={() => onCategoryPress(item)}>
+      <Wrapper onPress={() => onCategoryPress(item)} key={index}>
         <Text
-          style={
+          style={[
             selectedCategory === item
               ? {
                   fontWeight: 600,
                   color: '#000',
                 }
-              : {}
-          }>
+              : {},
+          ]}>
           {item}
         </Text>
         {selectedCategory === item && <BottomActive />}
@@ -24,10 +24,11 @@ const Categories = ({categories, selectedCategory, onCategoryPress}) => {
   return (
     <FlatList
       horizontal={true}
-      style={{marginRight: -32}}
+      style={{marginHorizontal: 32}}
       showsHorizontalScrollIndicator={false}
       data={categories}
       renderItem={renderItem}
+      keyExtractor={item => String(item)}
     />
   );
 };
@@ -38,8 +39,7 @@ const Wrapper = styled.Pressable`
   align-items: center;
   justify-content: center;
   margin-right: 17px;
-  padding-top: 16px;
-  padding-bottom: 16px;
+  margin-bottom: 16px;
 `;
 
 const Text = styled.Text`
