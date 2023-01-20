@@ -1,17 +1,15 @@
-import React, {useState} from 'react';
-import {Text} from 'react-native';
+import React from 'react';
 import styled from 'styled-components/native';
+import GradientText from './GradientText';
 
-const Title = () => {
-  const [slogan, setSlogan] = useState('just random text');
-
-  const onTextPress = () => {
-    setSlogan('My slogan!!');
-  };
-
+const Title = ({subtitle, title}) => {
   return (
     <Wrapper>
-      <Text onPress={onTextPress}>{slogan}</Text>
+      <Subtitle>{subtitle}</Subtitle>
+      <GradientText style={{fontSize: 40, fontWeight: 900}}>
+        {title}
+      </GradientText>
+      <Text>Explore Attractions</Text>
     </Wrapper>
   );
 };
@@ -20,7 +18,17 @@ export default Title;
 
 const Wrapper = styled.View`
   width: 100%;
-  background: yellow;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
+`;
+
+const Subtitle = styled.Text`
+  font-size: 24px;
+  font-weight: 300;
+`;
+
+const Text = styled.Text`
+  font-size: 20px;
+  font-weight: 700;
+  margin-top: 40px;
 `;
