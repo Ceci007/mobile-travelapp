@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {FlatList, SafeAreaView, View, Text} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 import styled from 'styled-components/native';
 import AttractionCard from '../components/AttractionCard';
 import Categories from '../components/Categories';
@@ -10,6 +11,7 @@ import categories from '../data/categories.json';
 const ALL = 'All';
 
 const HomeScreen = () => {
+  const navigation = useNavigation();
   const [selectedCategory, setSelectedCategory] = useState(ALL);
   const [data, setData] = useState([]);
 
@@ -65,6 +67,7 @@ const HomeScreen = () => {
             title={item.name}
             imageSrc={item.images?.length ? item.images[0] : null}
             subtitle={item.city}
+            onPress={() => navigation.navigate('AttractionDetails', {item})}
           />
         )}
       />

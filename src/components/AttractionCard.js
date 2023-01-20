@@ -4,9 +4,11 @@ import styled from 'styled-components/native';
 
 const {width} = Dimensions.get('window');
 
-const AttractionCard = ({imageSrc, title, subtitle, index}) => {
+const AttractionCard = ({imageSrc, title, subtitle, index, onPress}) => {
   return (
-    <CardContainer m={index % 2 === 0 ? 'margin-right' : 'margin-none'}>
+    <CardContainer
+      onPress={onPress}
+      m={index % 2 === 0 ? 'margin-right' : 'margin-none'}>
       <CardImage source={{uri: imageSrc}} />
       <Wrapper>
         <Title>{title}</Title>
@@ -29,7 +31,7 @@ const CardImage = styled.Image`
   margin-bottom: 12px;
 `;
 
-const CardContainer = styled.View`
+const CardContainer = styled.TouchableOpacity`
   padding: 5px;
   border-radius: 15px;
   background: #fff;
